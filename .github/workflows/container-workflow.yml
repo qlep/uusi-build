@@ -13,19 +13,19 @@ jobs:
     - name: Checkout dockerfile
       uses: actions/checkout@v2
       with:
-        repository: uusi-build
+        repository: qlep/uusi-build
         path: uudistus
 
     - name: Checkout front
       uses: actions/checkout@v2
       with:
-        repository: uusi-front
+        repository: qlep/uusi-front
         path: uudistus
 
     - name: Checkout back
       uses: actions/checkout@v2
       with:
-        repository: uusi-back
+        repository: qlep/uusi-back
         path: uudistus
 
     - name: Build and Push to Azure CR
