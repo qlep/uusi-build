@@ -20,14 +20,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: qlep/uusi-front
-        token: ${{ github.uudistus }}
+        token: ${{ github.token }}
         path: uudistus
 
     - name: Checkout back
       uses: actions/checkout@v2
       with:
         repository: qlep/uusi-back
-        token: ${{ github.uudistus }}
+        token: ${{ github.token }}
         path: uudistus
 
     - name: Build and Push to Azure CR
