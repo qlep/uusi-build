@@ -1,0 +1,53 @@
+name: Build and deploy DTH:n uudet sivut
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout dockerfile
+      uses: actions/checkout@v2
+      with:
+        repository: uusi-build
+        path: uudistus
+
+    - name: Checkout front
+      uses: actions/checkout@v2
+      with:
+        repository: uusi-front
+        path: uudistus
+
+    - name: Checkout back
+      uses: actions/checkout@v2
+      with:
+        repository: uusi-back
+        path: uudistus
+
+    - name: Build and Push to Azure CR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.AZURE_UUDISTUS_CR_SERVER }}
+        username: ${{ secrets.AZURE_UUDISTUS_CR_USERNAME }}
+        password: ${{ secrets.AZURE_UUDISTUS_CR_PASS }}
+
+    - run: |
+        docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
+        docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: 'Deploy Container to Azure App Service'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'frontend-uudistus'
+          publish-profile: ${{ secrets.AZURE_UUDISTUS_PROFILE }}
+          images: 'boatregistry.azurecr.io/unit-weather:latest'
