@@ -11,24 +11,24 @@ jobs:
 
     steps:
     - name: Checkout dockerfile
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: qlep/uusi-build
-        path: uudistus
+        path: uudistus-build
 
     - name: Checkout front
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: qlep/uusi-front
         token: ${{ github.token }}
-        path: uudistus
+        path: uudistus-front
 
     - name: Checkout back
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: qlep/uusi-back
         token: ${{ github.token }}
-        path: uudistus
+        path: uudistus-back
 
     - name: Build and Push to Azure CR
       uses: azure/docker-login@v1
