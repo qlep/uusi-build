@@ -6,7 +6,7 @@ COPY ../DT-Frontend-Uudistus/ ./
 COPY ../dth.fi-backend-uudistus/ ./
 RUN sed -i 's/\r$//' build.sh
 RUN ./build.sh
-EXPOSE 3000
+EXPOSE 80
 RUN npm i
 
 CMD ["npm", "run", "start"]

@@ -49,6 +49,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'frontend-uudistus'
+          app-name: 'uudistus-dt'
           publish-profile: ${{ secrets.AZURE_UUDISTUS_PROFILE }}
-          images: 'boatregistry.azurecr.io/unit-weather:latest'
+          images: 'uudistuscr.azurecr.io/dt-frontend-uudistus:latest'
