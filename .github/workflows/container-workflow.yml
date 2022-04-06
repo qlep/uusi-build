@@ -52,5 +52,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'uudistus-dt'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_45361a6fe5644cecbf686cba95d083d1 }}
+          publish-profile: ${{ secrets.AZURE_UUDISTUS_DT_PROFILE }}
           images: 'uudistuscr.azurecr.io/dt-frontend-uudistus:uudest'
