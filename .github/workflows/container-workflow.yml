@@ -12,19 +12,25 @@ jobs:
     steps:
     - name: Checkout dockerfile
       uses: actions/checkout@v3
+
+    - name: Print folder content
       run: ls
 
     - name: Checkout front
       uses: actions/checkout@v3
-      run: ls
       with:
         repository: qlep/uusi-front
+    
+    - name: Print folder content
+      run: ls
 
     - name: Checkout back
       uses: actions/checkout@v3
-      run: ls
       with:
         repository: qlep/uusi-back
+    
+    - name: Print folder content
+      run: ls
 
     - name: Build and Push to Azure CR
       uses: azure/docker-login@v1
