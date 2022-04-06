@@ -13,26 +13,17 @@ jobs:
     - name: Checkout dockerfile
       uses: actions/checkout@v3
 
-    - name: Print folder content
-      run: ls
-
     - name: Checkout front
       uses: actions/checkout@v3
       with:
         repository: qlep/uusi-front
         path: uudistus-front
-    
-    - name: Print folder content
-      run: ls
 
     - name: Checkout back
       uses: actions/checkout@v3
       with:
         repository: qlep/uusi-back
         path: uudistus-back
-    
-    - name: Print folder content
-      run: ls
 
     - name: Build and Push to Azure CR
       uses: azure/docker-login@v1
@@ -59,5 +50,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'uudistus-dt'
-          publish-profile: ${{ secrets.AZURE_UUDISTUS_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_UUDISTUS_DT_PROFILE }}
           images: 'uudistuscr.azurecr.io/dt-frontend-uudistus:latest'
