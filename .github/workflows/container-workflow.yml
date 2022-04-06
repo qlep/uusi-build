@@ -43,7 +43,9 @@ jobs:
 
     - run: |
         ls
+        echo "FRONT DIR:"
         ls uudistus-front
+        echo "BACK DIR:"
         ls uudistus-back
         docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
         docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
