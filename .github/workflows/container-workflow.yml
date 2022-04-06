@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: qlep/uusi-back
-        path: uudustus-back
+        path: uudistus-back
     
     - name: Print folder content
       run: ls
@@ -43,6 +43,8 @@ jobs:
 
     - run: |
         ls
+        ls uudistus-front
+        ls uudistus-back
         docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
         docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
 
