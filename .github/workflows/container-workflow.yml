@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout dockerfile
       uses: actions/checkout@v3
-      with:
-        repository: qlep/uusi-build
 
     - name: Checkout front
       uses: actions/checkout@v3
