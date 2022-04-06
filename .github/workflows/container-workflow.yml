@@ -42,6 +42,7 @@ jobs:
         password: ${{ secrets.AZURE_UUDISTUS_CR_PASS }}
 
     - run: |
+        ls
         docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
         docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
 
