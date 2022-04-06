@@ -27,11 +27,7 @@ jobs:
 
     - name: Build and Push to Azure CR
       uses: azure/docker-login@v1
-      with:
-        login-server: ${{ secrets.AZURE_UUDISTUS_CR_SERVER }}
-        username: ${{ secrets.AZURE_UUDISTUS_CR_USERNAME }}
-        password: ${{ secrets.AZURE_UUDISTUS_CR_PASS }}
-        run: |
+      run: |
           ls
           echo "FRONT DIR:"
           ls uudistus-front
@@ -39,6 +35,10 @@ jobs:
           ls uudistus-back
           docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
           docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
+      with:
+        login-server: ${{ secrets.AZURE_UUDISTUS_CR_SERVER }}
+        username: ${{ secrets.AZURE_UUDISTUS_CR_USERNAME }}
+        password: ${{ secrets.AZURE_UUDISTUS_CR_PASS }}
 
   deploy:
     runs-on: ubuntu-latest
