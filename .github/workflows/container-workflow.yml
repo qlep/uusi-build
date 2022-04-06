@@ -25,8 +25,7 @@ jobs:
         repository: qlep/uusi-back
         path: uudistus-back
 
-    - name: Build and Push to Azure CR
-      uses: azure/docker-login@v1
+    - name: Show folder stucture
       run: |
           ls
           echo "FRONT DIR:"
@@ -35,6 +34,9 @@ jobs:
           ls uudistus-back
           docker build . -t uudistuscr.azurecr.io/dt-frontend-uudistus:latest
           docker push uudistuscr.azurecr.io/dt-frontend-uudistus:latest
+
+    - name: Build and Push to Azure CR
+      uses: azure/docker-login@v1
       with:
         login-server: ${{ secrets.AZURE_UUDISTUS_CR_SERVER }}
         username: ${{ secrets.AZURE_UUDISTUS_CR_USERNAME }}
