@@ -1,9 +1,9 @@
 FROM node:16
 WORKDIR /app
-COPY uudistus-front/DT-Frontend-Uudistus/package.json ./
-COPY uudistus-front/DT-Frontend-Uudistus/package-lock.json ./
-COPY uudistus-front/DT-Frontend-Uudistus/ ./
-COPY uudistus-back/dth.fi-backend-uudistus/ ./
+COPY uudistus-front/package.json ./
+COPY uudistus-front/package-lock.json ./
+COPY uudistus-front/ ./
+COPY uudistus-back/ ./
 RUN sed -i 's/\r$//' build.sh
 RUN ./build.sh
 EXPOSE 3000
